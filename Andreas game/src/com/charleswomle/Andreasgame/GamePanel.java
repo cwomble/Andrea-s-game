@@ -6,9 +6,12 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+
 import javax.swing.JPanel;
+
 import com.charleswomble.GameState.GameStateManager;
 
+@SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Runnable, KeyListener
 {
 	//dimensions
