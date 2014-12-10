@@ -2,9 +2,9 @@ package Entity;
 
 import java.awt.Rectangle;
 
+import com.charleswomble.Andreasgame.GamePanel;
 import com.charleswomble.TileMap.Tile;
 import com.charleswomble.TileMap.TileMap;
-import com.charleswomle.Andreasgame.GamePanel;
 
 public abstract class MapObject 
 {

@@ -3,11 +3,12 @@ package com.charleswomble.GameState;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.*;
-import Entity.Player;
+
 import Entity.*;
+
+import com.charleswomble.Andreasgame.GamePanel;
 import com.charleswomble.TileMap.Background;
 import com.charleswomble.TileMap.TileMap;
-import com.charleswomle.Andreasgame.GamePanel;
 
 public class Level1State extends GameState
 {

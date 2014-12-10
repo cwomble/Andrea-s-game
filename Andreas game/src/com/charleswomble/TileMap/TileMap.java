@@ -6,7 +6,7 @@ import java.io.*;
 
 import javax.imageio.ImageIO;
 
-import com.charleswomle.Andreasgame.GamePanel;
+import com.charleswomble.Andreasgame.GamePanel;
 
 public class TileMap 
 {

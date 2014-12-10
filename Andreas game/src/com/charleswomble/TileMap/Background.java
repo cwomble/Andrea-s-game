@@ -2,8 +2,10 @@ package com.charleswomble.TileMap;
 
 import java.awt.*;
 import java.awt.image.*;
+
 import javax.imageio.ImageIO;
-import com.charleswomle.Andreasgame.GamePanel;
+
+import com.charleswomble.Andreasgame.GamePanel;
 
 public class Background {
 	
