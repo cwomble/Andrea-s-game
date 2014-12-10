@@ -99,7 +99,8 @@ public class Player extends MapObject
 					}
 					else if(i == 7)
 					{
-						bi[j] = spritesheet.getSubimage(j * width * 2, i * height, width, height);
+						bi[j] = spritesheet.getSubimage(j * width * 2, i * height,
+								width * 2, height);
 					}
 				}
 				
