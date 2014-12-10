@@ -25,7 +25,7 @@ public class Player extends MapObject
 	private boolean firing;
 	private int fireCost;
 	private int fireBallDamage;	
-	//private ArrayList<FireBall> fireBalls;
+	private ArrayList<FireBall> fireBalls;
 	
 	//scratch
 	private boolean scratching;
@@ -73,7 +73,7 @@ public class Player extends MapObject
 		
 		fireCost = 200;
 		fireBallDamage = 5;
-		//fireBalls = new ArrayList<FireBall>();
+		fireBalls = new ArrayList<FireBall>();
 		
 		scratchDamage = 8;
 		scratchRange = 40;
@@ -97,7 +97,7 @@ public class Player extends MapObject
 					{
 					bi[j] = spritesheet.getSubimage(j * width, i * height, width, height);
 					}
-					else if(i == 7)
+					else
 					{
 						bi[j] = spritesheet.getSubimage(j * width * 2, i * height,
 								width * 2, height);
@@ -235,6 +235,44 @@ public class Player extends MapObject
 		checkTileMapCollision();
 		setPosition(xtemp, ytemp);
 		
+		//check attack has stopped
+		if(currentAction == SCRATCHING)
+		{
+			if(animation.hasPlayedOnce())
+				scratching = false;
+		}
+		if(currentAction == FIREBALL)
+		{
+			if(animation.hasPlayedOnce())
+				firing = false;
+		}
+		
+		//fireball attack
+		fire += 1;
+		if(fire > maxFire)
+			fire = maxFire;
+		if(firing && currentAction != FIREBALL)
+		{
+			if(fire > fireCost)
+			{
+				fire -= fireCost;
+				FireBall fb = new FireBall(tileMap, facingRight);
+				fb.setPosition(x, y);
+				fireBalls.add(fb);
+			}
+		}
+		
+		//update fireballs
+		for( int i = 0; i < fireBalls.size(); i++)
+		{
+			fireBalls.get(i).update();
+			if(fireBalls.get(i).shouldRemove())
+			{
+				fireBalls.remove(i);
+				i--;
+			}
+		}
+		
 		//set animation
 		if(scratching)
 		{
@@ -320,6 +358,12 @@ public class Player extends MapObject
 	public void draw(Graphics2D g)
 	{
 		setMapPosition();
+		
+		//draw fireballs
+		for(int i = 0; i < fireBalls.size(); i++)
+		{
+			fireBalls.get(i).draw(g);
+		}
 		
 		//draw player
 		if(flinching)
