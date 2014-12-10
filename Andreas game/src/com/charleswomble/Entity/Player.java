@@ -81,7 +81,8 @@ public class Player extends MapObject
 		//load sprites
 		try
 		{
-			BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream("/Sprites/Player/playersprites.gif"));
+			BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream
+							("/Sprites/Player/playersprites.gif"));
 			
 			
 			sprites = new ArrayList<BufferedImage[]>();
