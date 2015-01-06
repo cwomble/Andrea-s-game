@@ -62,8 +62,7 @@ public class Player extends MapObject
 		stopSpeed = 0.4;
 		fallSpeed = 0.15;
 		maxFallSpeed = 4.0;
-		jumpStart = -4.8;
-		jumpStart = -4.8;
+		jumpStart = -4.8;  
 		stopJumpSpeed = 0.3;
 		
 		facingRight = true;
@@ -375,16 +374,7 @@ public class Player extends MapObject
 			}
 		}
 		
-		if(facingRight)
-		{
-			g.drawImage(animation.getImage(), (int)(x + xmap - width / 2),
-					(int)(y + ymap - height / 2), null);
-		}
-		else
-		{
-			g.drawImage(animation.getImage(), (int)(x + xmap - width / 2 + width), 
-					(int)(y + ymap - height / 2), -width, height, null);
-		}
+		super.draw(g);
 		
 	}
 	

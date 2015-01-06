@@ -3,9 +3,11 @@ package com.charleswomble.GameState;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.*;
+import java.util.ArrayList;
 
 import com.charleswomble.Andreasgame.GamePanel;
 import com.charleswomble.Entity.*;
+import com.charleswomble.Entity.Enemies.Slugger;
 import com.charleswomble.TileMap.Background;
 import com.charleswomble.TileMap.TileMap;
 
@@ -16,6 +18,10 @@ public class Level1State extends GameState
 	private Background bg;
 	
 	private Player player;
+	
+	private ArrayList<Enemy> enemies;
+	
+	private HUD hud;
 	
 	public Level1State(GameStateManager gsm)
 	{
@@ -36,6 +42,14 @@ public class Level1State extends GameState
 		
 		player = new Player(tileMap);
 		player.setPosition(100, 100);
+		
+		enemies = new ArrayList<Enemy>();
+		Slugger s;
+		s = new Slugger(tileMap);
+		s.setPosition(100, 100);
+		enemies.add(s);
+		
+		hud = new HUD(player);
 	}
 
 	@Override
@@ -45,6 +59,16 @@ public class Level1State extends GameState
 		player.update();
 		tileMap.setPosition(GamePanel.WIDTH / 2 - player.getx(),
 				GamePanel.HEIGHT / 2 - player.gety());
+		
+		// set background
+		bg.setPosition(tileMap.getx(), tileMap.gety());
+		
+		//update enemies
+		for(int i = 0; i < enemies.size(); i++)
+		{
+			enemies.get(i).update();
+		}
+		
 	}
 
 	@Override
@@ -59,6 +83,14 @@ public class Level1State extends GameState
 		//draw player
 		player.draw(g);
 		
+		//draw enemies
+		for(int i = 0; i < enemies.size(); i++)
+		{
+			enemies.get(i).draw(g);;
+		}
+		
+		//draw hud
+		hud.Draw(g);
 	}
 
 	@Override
@@ -96,7 +128,7 @@ public class Level1State extends GameState
 		if(k == KeyEvent.VK_SPACE)
 				player.setJumping(false);
 		if(k == KeyEvent.VK_SHIFT)
-				player.setGliding(true);
+				player.setGliding(false);
 		
 	}
 

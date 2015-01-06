@@ -14,7 +14,7 @@ public class MenuState extends GameState
 	private Background bg;
 	
 	private int currentChoice = 0;
-	private String[] options = {"Start","Help","Quit"};
+	private String[] options = {"Start","Help","Quit","Happy Birthday!!!"};
 	
 	private Color titleColor;
 	private Font titleFont;
@@ -28,7 +28,7 @@ public class MenuState extends GameState
 		
 		try
 		{
-			bg = new Background("/Backgrounds/Menubg.gif", 1);
+			bg = new Background("/Backgrounds/menubg.gif", 1);
 			bg.setVector(-0.1, 0);
 			
 			titleColor = new Color(128, 0, 0);
@@ -96,6 +96,12 @@ public class MenuState extends GameState
 		if (currentChoice == 2)
 		{
 			System.exit(0);
+		}
+		if (currentChoice == 3)
+		{
+			// Happy birthday
+			bg = new Background("/Backgrounds/Birthday.gif", 1);
+			bg.setVector(-0.1, 0);
 		}
 	}
 	
